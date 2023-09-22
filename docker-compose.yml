@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:latest
+    container_name: sb-notes-crud
+    # restart: always
+    environment:
+      - POSTGRES_USER=sb-user
+      - POSTGRES_PASSWORD=SBSuperSecret
+      - POSTGRES_DB=sb-notes-crud
+    ports:
+      - '5433:5432'
+    volumes:
+      - sb_notes_crud_vol:/var/lib/postgresql/data
+
+volumes:
+  sb_notes_crud_vol:
+    driver: local
